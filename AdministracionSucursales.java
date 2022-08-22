@@ -3,4 +3,12 @@ public class AdministracionSucursales {
     int Numero;
     String Direccion;
     String Tecnico;
+
+    AdministracionSucursales(int Numero, String Direccion, String Tecnico){
+        this.Numero = Numero;
+        this.Direccion = Direccion;
+        this.Tecnico = Tecnico;
+    }
+    
+
 }
