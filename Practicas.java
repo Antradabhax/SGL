@@ -1,38 +1,79 @@
-import java.util.ArrayList;
+import java.util.Scanner;
 
 //Estudios que puede hacer el laboratorio
 public class Practicas {
-    private int CodigoPractica;
-    private String NombrePractica;
-    private String Grupo;
-    private String ValorCritico;
-    private String ValorReservado;
-    private int CantidadHoras;
+    public static void main(String[] args) {
+        Practicas[] listaPracticas = new Practicas[40];
+        crearPractica(listaPracticas);
+    }
 
-    public Practicas(int CodigoPractica, String NombrePractica, String Grupo, String ValorCritico,
-            String ValorReservado, int CantidadHoras) {
-        this.CodigoPractica = CodigoPractica;
-        this.NombrePractica = NombrePractica;
+    private int Codigo;
+    private String Nombre;
+    private String Grupo;
+    private int ValorCritico;
+    private int ValorReservado;
+    private String FechaEstimadaFinalizacion;
+
+    public Practicas(int Codigo, String Nombre, String Grupo, int ValorCritico, int ValorReservado,
+            String FechaEstimadaFinalizacion) {
+        this.Codigo = Codigo;
+        this.Nombre = Nombre;
         this.Grupo = Grupo;
         this.ValorCritico = ValorCritico;
         this.ValorReservado = ValorReservado;
-        this.CantidadHoras = CantidadHoras;
+        this.FechaEstimadaFinalizacion = FechaEstimadaFinalizacion;
     }
 
-    public int getCodigoPractica() {
-        return this.CodigoPractica;
+    public static void crearPractica(Practicas[] listaPracticas) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Ingrese el CODIGO deseado para asignarle a la practica:");
+        System.out.println("");
+        int Codigo = Integer.parseInt(sc.nextLine());
+        System.out.println("");
+
+        System.out.println("Ingrese el NOMBRE deseado para asignarle a la practica");
+        System.out.println("");
+        String Nombre = sc.nextLine();
+        System.out.println("");
+
+        String Grupo = "Grupo 3";
+
+        System.out.println("Ingrese el VALOR critico deseado para asignarle a la practica");
+        System.out.println("");
+        int ValorCritico = Integer.parseInt(sc.nextLine());
+        System.out.println("");
+
+        System.out.println("Ingrese el VALOR RESERVADO deseado para asignarle a la practica");
+        System.out.println("");
+        int ValorReservado = Integer.parseInt(sc.nextLine());
+        System.out.println("");
+
+        System.out.println("Ingrese la FECHA DE FINALIZACION ESPERADA (use el formato XX/XX/XXXX) de la practica");
+        System.out.println("");
+        String FechaEstimadaFinalizacion = sc.nextLine();
+        System.out.println("");
+
+        listaPracticas[0] = new Practicas(Codigo, Nombre, Grupo, ValorCritico, ValorReservado,
+                FechaEstimadaFinalizacion);
+        System.out.println(listaPracticas[0].Codigo);
+        sc.close();
     }
 
-    public void setCodigoPractica(int CodigoPractica) {
-        this.CodigoPractica = CodigoPractica;
+    public int getCodigo() {
+        return this.Codigo;
     }
 
-    public String getNombrePractica() {
-        return this.NombrePractica;
+    public void setCodigo(int Codigo) {
+        this.Codigo = Codigo;
     }
 
-    public void setNombrePractica(String NombrePractica) {
-        this.NombrePractica = NombrePractica;
+    public String getNombre() {
+        return this.Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
     public String getGrupo() {
@@ -43,28 +84,28 @@ public class Practicas {
         this.Grupo = Grupo;
     }
 
-    public String getValorCritico() {
+    public int getValorCritico() {
         return this.ValorCritico;
     }
 
-    public void setValorCritico(String ValorCritico) {
+    public void setValorCritico(int ValorCritico) {
         this.ValorCritico = ValorCritico;
     }
 
-    public String getValorReservado() {
+    public int getValorReservado() {
         return this.ValorReservado;
     }
 
-    public void setValorReservado(String ValorReservado) {
+    public void setValorReservado(int ValorReservado) {
         this.ValorReservado = ValorReservado;
     }
 
-    public int getCantidadHoras() {
-        return this.CantidadHoras;
+    public String getFechaEstimadaFinalizacion() {
+        return this.FechaEstimadaFinalizacion;
     }
 
-    public void setCantidadHoras(int CantidadHoras) {
-        this.CantidadHoras = CantidadHoras;
+    public void setFechaEstimadaFinalizacion(String FechaEstimadaFinalizacion) {
+        this.FechaEstimadaFinalizacion = FechaEstimadaFinalizacion;
     }
 
 }
