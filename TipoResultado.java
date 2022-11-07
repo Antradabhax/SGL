@@ -7,8 +7,9 @@ public class TipoResultado {
         
     public Enumeration principal(){
     Vector <String> Resultados = new Vector<>();
-    Resultados.add("En Proceso");
-    Resultados.add("Finalizado");
+    Resultados.add("Criticos");
+    Resultados.add("Booleanos");
+    Resultados.add("Cadena");
     TipoResultado = Resultados.elements();
     return TipoResultado;
     }
