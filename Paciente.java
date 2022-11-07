@@ -4,5 +4,54 @@ public class Paciente {
     private String domicilio;
     private String mail;
     private String sexo;
-    private int edad;   
+    private int edad; 
+
+	public int getDni() {
+		return this.dni;
+	}
+
+	public void setDni(int dni) {
+		this.dni = dni;
+	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDomicilio() {
+		return this.domicilio;
+	}
+
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
+	}
+
+	public String getMail() {
+		return this.mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getSexo() {
+		return this.sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public int getEdad() {
+		return this.edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+  
 }
