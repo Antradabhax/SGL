@@ -1,3 +1,3 @@
 public class ResultadoPractica {
-    private tipoReserva confidencialidad;
+    private TipoReserva confidencialidad;
 }
