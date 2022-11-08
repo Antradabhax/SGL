@@ -1,16 +1,13 @@
-import java.util.Enumeration;
-import java.util.Vector;
-
+import java.util.List;
 
 public class EstadoPractica {
 
-    private Enumeration EstadoPractica;
-        
-    public Enumeration principal(){
-    Vector <String> Estados = new Vector<>();
-    Estados.add("En Proceso");
-    Estados.add("Finalizado");
-    EstadoPractica = Estados.elements();
-    return EstadoPractica;
+    public void setEstadoPracticaFinalizado(String e){
+        e = "Finalizado";
     }
+
+    public void setEstadoPracticaEnProceso(String e){
+        e = "En Proceso";
+    }
+    
 }

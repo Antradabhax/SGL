@@ -3,11 +3,20 @@ public class Practica {
     private String nombrePractica;
     private String grupo;
     private int cantidadHorasResultado;
-    private EstadoPractica estado;
+    private String estado;
     private float valorCriticoMinimo;
     private float valorCriticoMaximo;
     private TipoResultado Resultado;
     private boolean usada;
+
+    public String getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
 
     public int getCodigoPractica() {
         return this.codigoPractica;
@@ -39,14 +48,6 @@ public class Practica {
 
     public void setCantidadHorasResultado(int cantidadHorasResultado) {
         this.cantidadHorasResultado = cantidadHorasResultado;
-    }
-
-    public EstadoPractica getEstado() {
-        return this.estado;
-    }
-
-    public void setEstado(EstadoPractica estado) {
-        this.estado = estado;
     }
 
     public float getValorCriticoMinimo() {

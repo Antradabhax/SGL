@@ -19,9 +19,7 @@ public class PacienteController {
                 }
             }
         }
-        if (validez == false) {
-            return "Paciente no puede ser eliminado, posee practicas completadas";
-        }
+        
         if (validez = true) {
             for (int k = 0; k > listaPacientes.size(); k++) {
                 if (dniPaciente == listaPacientes.get(k).getDni()) {
@@ -30,6 +28,9 @@ public class PacienteController {
                 }
             }
         }
+        
+        return "Paciente no puede ser eliminado, posee practicas completadas";
+        
     }
 
 }

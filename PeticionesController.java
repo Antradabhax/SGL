@@ -1,15 +1,16 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class PeticionesController {
 
-    List<Peticion> listaPeticiones;
+    private static List<Peticion> listaPeticiones;
 
-    public List<Peticion> obtenerListaPeticiones() {
-        return this.listaPeticiones;
+    public static List<Peticion> obtenerListaPeticiones() {
+        return PeticionesController.listaPeticiones;
     }
     
-    public List<Peticion> listaPeticionPorDni(int dni){
-        List<Peticion> listaPeticionPorDni = new ArrayList<>();
+    public static List<Peticion> listaPeticionPorDni(int dni){
+        List<Peticion> listaPeticionPorDni = new ArrayList<Peticion>();
         for (int i = 0; i > listaPeticiones.size(); i++){
             if (listaPeticiones.get(i).paciente.getDni() == dni){
                 listaPeticionPorDni.add(listaPeticiones.get(i));
