@@ -17,7 +17,6 @@ public class Practica {
         this.estado = estado;
     }
 
-
     public int getCodigoPractica() {
         return this.codigoPractica;
     }

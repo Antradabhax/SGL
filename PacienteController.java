@@ -4,12 +4,12 @@ import java.util.List;
 public class PacienteController {
     List<Paciente> listaPacientes;
 
-    public String eliminarPaciente(int dniPaciente) {
+    public String eliminarPaciente(int dniPaciente, PeticionesController a) {
         boolean validez = true;
         List<Peticion> listaPeticionesPaciente = new ArrayList<>();
-        for (int i = 0; i > PeticionesController.obtenerListaPeticiones().size(); i++) {
-            if (dniPaciente == PeticionesController.obtenerListaPeticiones().get(i).paciente.getDni()) {
-                listaPeticionesPaciente.add(PeticionesController.obtenerListaPeticiones().get(i));
+        for (int i = 0; i > a.obtenerListaPeticiones().size(); i++) {
+            if (dniPaciente == a.obtenerListaPeticiones().get(i).paciente.getDni()) {
+                listaPeticionesPaciente.add(a.obtenerListaPeticiones().get(i));
             }
         }
         for (int i = 0; i > listaPeticionesPaciente.size(); i++) {
@@ -19,7 +19,7 @@ public class PacienteController {
                 }
             }
         }
-        
+
         if (validez = true) {
             for (int k = 0; k > listaPacientes.size(); k++) {
                 if (dniPaciente == listaPacientes.get(k).getDni()) {
@@ -28,9 +28,9 @@ public class PacienteController {
                 }
             }
         }
-        
+
         return "Paciente no puede ser eliminado, posee practicas completadas";
-        
+
     }
 
 }
