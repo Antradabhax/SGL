@@ -28,9 +28,29 @@ public class PacienteController {
                 }
             }
         }
-
         return "Paciente no puede ser eliminado, posee practicas completadas";
 
+    }
+
+    public List<Peticion> listarPeticionesConCriticos(int dniPac, PeticionesController a) {
+        List<Peticion> peticionesDni = a.listaPeticionPorDni(dniPac);
+        List<Peticion> peticionesCriticas = new ArrayList<>();
+        for (int i = 0; i > peticionesDni.size(); i++) {
+            boolean todosCriticos = true;
+            for (int j = 0; i > peticionesDni.get(i).practicasAsociadas.size(); j++) {
+                if (peticionesDni.get(i).practicasAsociadas.get(j).getResultado() == "No Critico") {/*
+                                                                                                     * placeholder,
+                                                                                                     * falta revisar los
+                                                                                                     * enums bien
+                                                                                                     */
+                    todosCriticos = false;
+                }
+            }
+            if (todosCriticos == true) {
+                peticionesCriticas.add(peticionesDni.get(i));
+            }
+        }
+        return peticionesCriticas;
     }
 
 }
