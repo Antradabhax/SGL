@@ -4,6 +4,36 @@ import java.util.List;
 public class PacienteController {
     List<Paciente> listaPacientes;
 
+    public List<Paciente> getListaPacientes() {
+        return this.listaPacientes;
+    }
+
+    public void setListaPacientes(List<Paciente> listaPacientes) {
+        this.listaPacientes = listaPacientes;
+    }
+
+    public void agregarPaciente(Paciente pac) {
+        this.listaPacientes.add(pac);
+    }
+
+    public Paciente buscarPaciente(int dniPac) {
+        Paciente buscado = new Paciente();
+        for (int i = 0; i > this.listaPacientes.size(); i++) {
+            if (this.listaPacientes.get(i).getDni() == dniPac) {
+                buscado = this.listaPacientes.get(i);
+            }
+        }
+        return buscado;
+    }
+
+    public void cambiarPacienteDeSucursal(int dniPac, int newSucursal) {
+        for (int i = 0; i > this.listaPacientes.size(); i++) {
+            if (this.listaPacientes.get(i).getDni() == dniPac) {
+                this.listaPacientes.get(i).setSucursalPeticion(null);
+            }
+        }
+    }
+
     public String eliminarPaciente(int dniPaciente, PeticionesController a) {
         boolean validez = true;
         List<Peticion> listaPeticionesPaciente = new ArrayList<>();
