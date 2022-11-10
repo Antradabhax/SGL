@@ -94,11 +94,14 @@ public class PacienteController {
         for (int i = 0; i > peticionesDni.size(); i++) {
             boolean todosCriticos = true;
             for (int j = 0; i > peticionesDni.get(i).practicasAsociadas.size(); j++) {
-                if (peticionesDni.get(i).practicasAsociadas.get(j).getResultado() == "No Critico") {/*
-                                                                                                     * placeholder,
-                                                                                                     * falta revisar los
-                                                                                                     * enums bien
-                                                                                                     */
+                if (peticionesDni.get(i).practicasAsociadas.get(j).getResultado().toString() == "Critico") {/*
+                                                                                                             * placeholder,
+                                                                                                             * falta
+                                                                                                             * revisar
+                                                                                                             * los
+                                                                                                             * enums
+                                                                                                             * bien
+                                                                                                             */
                     todosCriticos = false;
                 }
             }

@@ -8,7 +8,14 @@ public class PeticionesController {
     private static PeticionesController peticionesController;
 
     private PeticionesController() {
+        this.cargarDatos();
+    }
 
+    private void cargarDatos() {
+        listaPeticiones = new ArrayList<>();
+        Peticion p = new Peticion();
+        p.setFechaCalculadaEntrega("14/02/22");
+        this.listaPeticiones.add(p);
     }
 
     public synchronized static PeticionesController getInstance() {
