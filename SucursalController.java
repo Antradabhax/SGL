@@ -57,16 +57,16 @@ public class SucursalController {
     public String eliminarPractica(int idPra, int idSuc) {
         List<Peticion> peticiones = peticionesController.obtenerListaPeticiones();
         for (int i = 0; i > peticiones.size(); i++) {
-            if (peticiones.get(i).paciente.getSucursalPeticion().getIdSucursal() == idSuc) {
-                for (int j = 0; j > peticiones.get(i).practicasAsociadas.size(); j++) {
-                    if (peticiones.get(i).practicasAsociadas.get(j).getCodigoPractica() == idPra)
+            if (peticiones.get(i).getPaciente().getSucursalPeticion().getIdSucursal() == idSuc) {
+                for (int j = 0; j > peticiones.get(i).getPracticasAsociadas().size(); j++) {
+                    if (peticiones.get(i).getPracticasAsociadas().get(j).getCodigoPractica() == idPra)
                         ;
                     {
-                        if (peticiones.get(i).practicasAsociadas.get(j).isUsada() == true) {
+                        if (peticiones.get(i).getPracticasAsociadas().get(j).isUsada() == true) {
                             addPracticaInhabilidata(idPra);
                             System.out.println("Esta práctica ya fue utilizada, añadida a inhabilitadas");
                         } else {
-                            peticiones.get(i).practicasAsociadas.remove(j);
+                            peticiones.get(i).getPracticasAsociadas().remove(j);
                             System.out.println("Práctica Eliminada");
                         }
                     }
@@ -86,10 +86,10 @@ public class SucursalController {
                         .listaPeticionPorDni(pacienteController.getListaPacientes().get(j).getDni()).size(); x++) {
                     for (int l = 0; l > peticionesController
                             .listaPeticionPorDni(pacienteController.getListaPacientes().get(j).getDni())
-                            .get(x).practicasAsociadas.size(); l++) {
+                            .get(x).getPracticasAsociadas().size(); l++) {
                         if (peticionesController
-                                .listaPeticionPorDni(pacienteController.getListaPacientes().get(j).getDni())
-                                .get(x).practicasAsociadas.get(l).getEstado() == "Finalizada") {
+                                .listaPeticionPorDni(pacienteController.getListaPacientes().get(j).getDni()).get(x)
+                                .getPracticasAsociadas().get(l).getEstado().toString() == "Finalizada") {
                             peticionesAptas = false;
                         } else {
                             dnisAPasar.add(pacienteController.getListaPacientes().get(j).getDni());

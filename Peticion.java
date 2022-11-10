@@ -1,11 +1,23 @@
 import java.util.List;
 
 public class Peticion {
-    Paciente paciente;
-    String obraSocial;
-    String fechaCarga;
-    List<Practica> practicasAsociadas;
-    String fechaCalculadaEntrega;
+    private Paciente paciente;
+    private String obraSocial;
+    private String fechaCarga;
+    private List<Practica> practicasAsociadas;
+    private String fechaCalculadaEntrega;
+
+    public Peticion() {
+    }
+
+    public Peticion(Paciente paciente, String obraSocial, String fechaCarga, List<Practica> practicasAsociadas,
+            String fechaCalculadaEntrega) {
+        this.paciente = paciente;
+        this.obraSocial = obraSocial;
+        this.fechaCarga = fechaCarga;
+        this.practicasAsociadas = practicasAsociadas;
+        this.fechaCalculadaEntrega = fechaCalculadaEntrega;
+    }
 
     public Paciente getPaciente() {
         return this.paciente;

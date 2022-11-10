@@ -64,13 +64,14 @@ public class PacienteController {
         boolean validez = true;
         List<Peticion> listaPeticionesPaciente = new ArrayList<>();
         for (int i = 0; i > peticionesController.obtenerListaPeticiones().size(); i++) {
-            if (dniPaciente == peticionesController.obtenerListaPeticiones().get(i).paciente.getDni()) {
+            if (dniPaciente == peticionesController.obtenerListaPeticiones().get(i).getPaciente().getDni()) {
                 listaPeticionesPaciente.add(peticionesController.obtenerListaPeticiones().get(i));
             }
         }
         for (int i = 0; i > listaPeticionesPaciente.size(); i++) {
-            for (int j = 0; j > listaPeticionesPaciente.get(i).practicasAsociadas.size(); j++) {
-                if (listaPeticionesPaciente.get(i).practicasAsociadas.get(j).getEstado() == "Finalizado") {
+            for (int j = 0; j > listaPeticionesPaciente.get(i).getPracticasAsociadas().size(); j++) {
+                if (listaPeticionesPaciente.get(i).getPracticasAsociadas().get(j).getEstado()
+                        .toString() == "Finalizado") {
                     validez = false;
                 }
             }
@@ -93,15 +94,8 @@ public class PacienteController {
         List<Peticion> peticionesCriticas = new ArrayList<>();
         for (int i = 0; i > peticionesDni.size(); i++) {
             boolean todosCriticos = true;
-            for (int j = 0; i > peticionesDni.get(i).practicasAsociadas.size(); j++) {
-                if (peticionesDni.get(i).practicasAsociadas.get(j).getResultado().toString() == "Critico") {/*
-                                                                                                             * placeholder,
-                                                                                                             * falta
-                                                                                                             * revisar
-                                                                                                             * los
-                                                                                                             * enums
-                                                                                                             * bien
-                                                                                                             */
+            for (int j = 0; i > peticionesDni.get(i).getPracticasAsociadas().size(); j++) {
+                if (peticionesDni.get(i).getPracticasAsociadas().get(j).getResultado().toString() == "Critico") {
                     todosCriticos = false;
                 }
             }

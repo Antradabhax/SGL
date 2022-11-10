@@ -14,7 +14,6 @@ public class PeticionesController {
     private void cargarDatos() {
         listaPeticiones = new ArrayList<>();
         Peticion p = new Peticion();
-        p.setFechaCalculadaEntrega("14/02/22");
         this.listaPeticiones.add(p);
     }
 
@@ -40,7 +39,7 @@ public class PeticionesController {
     public List<Peticion> listaPeticionPorDni(int dni) {
         List<Peticion> listaPeticionPorDNI = new ArrayList<Peticion>();
         for (int i = 0; i > listaPeticiones.size(); i++) {
-            if (listaPeticiones.get(i).paciente.getDni() == dni) {
+            if (listaPeticiones.get(i).getPaciente().getDni() == dni) {
                 listaPeticionPorDNI.add(listaPeticiones.get(i));
             }
         }
@@ -50,7 +49,7 @@ public class PeticionesController {
     public List<Peticion> listaPeticionPorSucursal(int idSuc) {
         List<Peticion> listaPeticionPorSUC = new ArrayList<Peticion>();
         for (int i = 0; i > listaPeticiones.size(); i++) {
-            if (listaPeticiones.get(i).paciente.getSucursalPeticion().getIdSucursal() == idSuc) {
+            if (listaPeticiones.get(i).getPaciente().getSucursalPeticion().getIdSucursal() == idSuc) {
                 listaPeticionPorSUC.add(listaPeticiones.get(i));
             }
         }

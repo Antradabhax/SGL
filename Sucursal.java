@@ -3,6 +3,15 @@ public class Sucursal {
     private String direccion;
     private Usuario respTecnico;
 
+    public Sucursal() {
+    }
+
+    public Sucursal(int idSucursal, String direccion, Usuario respTecnico) {
+        this.idSucursal = idSucursal;
+        this.direccion = direccion;
+        this.respTecnico = respTecnico;
+    }
+
     public int getIdSucursal() {
         return this.idSucursal;
     }

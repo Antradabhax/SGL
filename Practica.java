@@ -3,17 +3,17 @@ public class Practica {
     private String nombrePractica;
     private String grupo;
     private int cantidadHorasResultado;
-    private String estado;
+    private EstadoPractica estado;
     private float valorCriticoMinimo;
     private float valorCriticoMaximo;
     private TipoResultado Resultado;
     private boolean usada;
 
-    public String getEstado() {
+    public EstadoPractica getEstado() {
         return this.estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadoPractica estado) {
         this.estado = estado;
     }
 

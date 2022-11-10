@@ -8,6 +8,21 @@ public class Paciente {
 	private Sucursal sucursalPeticion;
 	private Sucursal sucursalRetiro;
 
+	public Paciente() {
+	}
+
+	public Paciente(int dni, String nombre, String domicilio, String mail, String sexo, int edad,
+			Sucursal sucursalPeticion, Sucursal sucursalRetiro) {
+		this.dni = dni;
+		this.nombre = nombre;
+		this.domicilio = domicilio;
+		this.mail = mail;
+		this.sexo = sexo;
+		this.edad = edad;
+		this.sucursalPeticion = sucursalPeticion;
+		this.sucursalRetiro = sucursalRetiro;
+	}
+
 	public Sucursal getSucursalPeticion() {
 		return this.sucursalPeticion;
 	}
