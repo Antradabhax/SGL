@@ -1,10 +1,28 @@
 public class Paciente {
-    private int dni;
-    private String nombre;
-    private String domicilio;
-    private String mail;
-    private String sexo;
-    private int edad; 
+	private int dni;
+	private String nombre;
+	private String domicilio;
+	private String mail;
+	private String sexo;
+	private int edad;
+	private Sucursal sucursalPeticion;
+	private Sucursal sucursalRetiro;
+
+	public Sucursal getSucursalPeticion() {
+		return this.sucursalPeticion;
+	}
+
+	public void setSucursalPeticion(Sucursal sucursalPeticion) {
+		this.sucursalPeticion = sucursalPeticion;
+	}
+
+	public Sucursal getSucursalRetiro() {
+		return this.sucursalRetiro;
+	}
+
+	public void setSucursalRetiro(Sucursal sucursalRetiro) {
+		this.sucursalRetiro = sucursalRetiro;
+	}
 
 	public int getDni() {
 		return this.dni;
@@ -53,5 +71,5 @@ public class Paciente {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
-  
+
 }
