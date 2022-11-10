@@ -1,15 +1,17 @@
 import java.util.List;
 
 public class UsuarioController {
-    List <Usuario> ListaUsuarios;
+    List<Usuario> ListaUsuarios;
 
-    public String ConsultarPeticiones(dniUsuario, dniPaciente){
-        if (Peticion.paciente.dni == dniPaciente)
-            return 
+    private static UsuarioController usuarioController;
+
+    private UsuarioController() {
     }
 
-    public void ModificarPaciente(dniUsuario, dniPaciente){
-        Paciente.dni = dniPaciente;
+    public synchronized static UsuarioController getInstance() {
+        if (usuarioController == null) {
+            usuarioController = new UsuarioController();
+        }
+        return usuarioController;
     }
 }
-
