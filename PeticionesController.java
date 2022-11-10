@@ -5,6 +5,19 @@ public class PeticionesController {
 
     private List<Peticion> listaPeticiones;
 
+    private static PeticionesController peticionesController;
+
+    private PeticionesController() {
+
+    }
+
+    public synchronized static PeticionesController getInstance() {
+        if (peticionesController == null) {
+            peticionesController = new PeticionesController();
+        }
+        return peticionesController;
+    }
+
     public List<Peticion> obtenerListaPeticiones() {
         return this.listaPeticiones;
     }

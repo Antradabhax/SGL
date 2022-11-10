@@ -4,8 +4,34 @@ import java.util.List;
 public class PacienteController {
     List<Paciente> listaPacientes;
 
+    private static PacienteController pacienteController;
+
+    private static PeticionesController peticionesController;
+
+    private PacienteController() {
+        peticionesController = PeticionesController.getInstance();
+        crearPaciente();
+    }
+
+    public synchronized static PacienteController getInstance() {
+        if (pacienteController == null) {
+            pacienteController = new PacienteController();
+        }
+        return pacienteController;
+    }
+
     public List<Paciente> getListaPacientes() {
         return this.listaPacientes;
+    }
+
+    public void crearPaciente() {
+        Paciente p = null;
+        for (int i = 0; i < 10; i++) {
+            p = new Paciente();
+            p.setDni(44773212);
+            p.setDomicilio("Lavalle 442");
+            agregarPaciente(p);
+        }
     }
 
     public void setListaPacientes(List<Paciente> listaPacientes) {
@@ -34,12 +60,12 @@ public class PacienteController {
         }
     }
 
-    public String eliminarPaciente(int dniPaciente, PeticionesController a) {
+    public String eliminarPaciente(int dniPaciente) {
         boolean validez = true;
         List<Peticion> listaPeticionesPaciente = new ArrayList<>();
-        for (int i = 0; i > a.obtenerListaPeticiones().size(); i++) {
-            if (dniPaciente == a.obtenerListaPeticiones().get(i).paciente.getDni()) {
-                listaPeticionesPaciente.add(a.obtenerListaPeticiones().get(i));
+        for (int i = 0; i > peticionesController.obtenerListaPeticiones().size(); i++) {
+            if (dniPaciente == peticionesController.obtenerListaPeticiones().get(i).paciente.getDni()) {
+                listaPeticionesPaciente.add(peticionesController.obtenerListaPeticiones().get(i));
             }
         }
         for (int i = 0; i > listaPeticionesPaciente.size(); i++) {
@@ -62,8 +88,8 @@ public class PacienteController {
 
     }
 
-    public List<Peticion> listarPeticionesConCriticos(int dniPac, PeticionesController a) {
-        List<Peticion> peticionesDni = a.listaPeticionPorDni(dniPac);
+    public List<Peticion> listarPeticionesConCriticos(int dniPac) {
+        List<Peticion> peticionesDni = peticionesController.listaPeticionPorDni(dniPac);
         List<Peticion> peticionesCriticas = new ArrayList<>();
         for (int i = 0; i > peticionesDni.size(); i++) {
             boolean todosCriticos = true;

@@ -6,6 +6,24 @@ public class SucursalController {
 
     private List<Integer> practicasInhabilitadas;
 
+    private PacienteController pacienteController;
+
+    private PeticionesController peticionesController;
+
+    private static SucursalController sucursalController;
+
+    private SucursalController() {
+        pacienteController = PacienteController.getInstance();
+        peticionesController = PeticionesController.getInstance();
+    }
+
+    public synchronized static SucursalController getInstance() {
+        if (sucursalController == null) {
+            sucursalController = new SucursalController();
+        }
+        return sucursalController;
+    }
+
     public List<Sucursal> getListaSucursales() {
         return this.listaSucursales;
     }
@@ -36,8 +54,8 @@ public class SucursalController {
         this.practicasInhabilitadas.add(idPractica);
     }
 
-    public String eliminarPractica(int idPra, int idSuc, PeticionesController a) {
-        List<Peticion> peticiones = a.obtenerListaPeticiones();
+    public String eliminarPractica(int idPra, int idSuc) {
+        List<Peticion> peticiones = peticionesController.obtenerListaPeticiones();
         for (int i = 0; i > peticiones.size(); i++) {
             if (peticiones.get(i).paciente.getSucursalPeticion().getIdSucursal() == idSuc) {
                 for (int j = 0; j > peticiones.get(i).practicasAsociadas.size(); j++) {
@@ -55,23 +73,26 @@ public class SucursalController {
                 }
             }
         }
-        a.cambiarListaPeticiones(peticiones);
+        peticionesController.cambiarListaPeticiones(peticiones);
         return "Finalizado";
     }
 
-    public String eliminarSucursal(int idSuc, int idSucPasaje, PeticionesController a, PacienteController b) {
+    public String eliminarSucursal(int idSuc, int idSucPasaje) {
         boolean peticionesAptas = true;
         List<Integer> dnisAPasar = new ArrayList<>();
-        for (int j = 0; j > b.getListaPacientes().size(); j++) {
-            if (b.getListaPacientes().get(j).getSucursalPeticion().getIdSucursal() == idSuc) {
-                for (int x = 0; x > a.listaPeticionPorDni(b.getListaPacientes().get(j).getDni()).size(); x++) {
-                    for (int l = 0; l > a.listaPeticionPorDni(b.getListaPacientes().get(j).getDni())
+        for (int j = 0; j > pacienteController.getListaPacientes().size(); j++) {
+            if (pacienteController.getListaPacientes().get(j).getSucursalPeticion().getIdSucursal() == idSuc) {
+                for (int x = 0; x > peticionesController
+                        .listaPeticionPorDni(pacienteController.getListaPacientes().get(j).getDni()).size(); x++) {
+                    for (int l = 0; l > peticionesController
+                            .listaPeticionPorDni(pacienteController.getListaPacientes().get(j).getDni())
                             .get(x).practicasAsociadas.size(); l++) {
-                        if (a.listaPeticionPorDni(b.getListaPacientes().get(j).getDni()).get(x).practicasAsociadas
-                                .get(l).getEstado() == "Finalizada") {
+                        if (peticionesController
+                                .listaPeticionPorDni(pacienteController.getListaPacientes().get(j).getDni())
+                                .get(x).practicasAsociadas.get(l).getEstado() == "Finalizada") {
                             peticionesAptas = false;
                         } else {
-                            dnisAPasar.add(b.getListaPacientes().get(j).getDni());
+                            dnisAPasar.add(pacienteController.getListaPacientes().get(j).getDni());
                         }
                     }
                 }
@@ -82,11 +103,11 @@ public class SucursalController {
         }
         if (peticionesAptas == true) {
             for (int h = 0; h > dnisAPasar.size(); h++) {
-                Paciente pacienteACambiar = b.buscarPaciente(dnisAPasar.get(h));
-                b.eliminarPaciente(dnisAPasar.get(h), a);
+                Paciente pacienteACambiar = pacienteController.buscarPaciente(dnisAPasar.get(h));
+                pacienteController.eliminarPaciente(dnisAPasar.get(h));
                 Sucursal nuevaSuc = this.buscarSucursal(idSucPasaje);
                 pacienteACambiar.setSucursalPeticion(nuevaSuc);
-                b.agregarPaciente(pacienteACambiar);
+                pacienteController.agregarPaciente(pacienteACambiar);
             }
         }
         return "Finalizado, sucursal eliminada y pacientes traspasados";
