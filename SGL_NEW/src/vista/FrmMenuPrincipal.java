@@ -21,6 +21,7 @@ public class FrmMenuPrincipal extends JFrame {
         setContentPane(pnlPrincipal);
         this.self=this;
 
+
     }
 
 }
