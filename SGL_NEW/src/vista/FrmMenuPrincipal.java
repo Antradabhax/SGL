@@ -8,6 +8,7 @@ public class FrmMenuPrincipal extends JFrame {
     
     private JPanel pnlPrincipal;
     private FrmMenuPrincipal self;
+    private JLabel Titulo;
 
     public FrmMenuPrincipal()
     {
