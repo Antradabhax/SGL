@@ -1,9 +1,7 @@
-package Controllers;
-
 import java.util.List;
 
 public class UsuarioController {
-    List<Usuario> ListaUsuarios;
+     List<Usuario> ListaUsuarios;
 
     private static UsuarioController usuarioController;
 
