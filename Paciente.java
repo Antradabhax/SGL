@@ -11,8 +11,7 @@ public class Paciente {
 	public Paciente() {
 	}
 
-	public Paciente(int dni, String nombre, String domicilio, String mail, String sexo, int edad,
-			Sucursal sucursalPeticion, Sucursal sucursalRetiro) {
+	public Paciente(int dni, String nombre, String domicilio, String mail, String sexo, int edad, Sucursal sucursalPeticion, Sucursal sucursalRetiro) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.domicilio = domicilio;

@@ -10,7 +10,6 @@ public class PacienteController {
 
     private PacienteController() {
         peticionesController = PeticionesController.getInstance();
-        crearPaciente();
     }
 
     public synchronized static PacienteController getInstance() {
@@ -24,14 +23,11 @@ public class PacienteController {
         return this.listaPacientes;
     }
 
-    public void crearPaciente() {
+    public void crearPaciente(int dni, String nombre, String domicilio, String mail, String sexo, int edad,
+    Sucursal sucursalPeticion, Sucursal sucursalRetiro ) {
         Paciente p = null;
-        for (int i = 0; i < 10; i++) {
-            p = new Paciente();
-            p.setDni(44773212);
-            p.setDomicilio("Lavalle 442");
-            agregarPaciente(p);
-        }
+        p = new Paciente(dni, nombre, domicilio, mail, sexo, edad, sucursalPeticion, sucursalRetiro);
+        agregarPaciente(p);
     }
 
     public void setListaPacientes(List<Paciente> listaPacientes) {
