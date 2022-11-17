@@ -1,3 +1,5 @@
+import Controllers.PeticionesController;
+
 public class test {
     public static void main(String[] args) {
         PeticionesController peticionesController = PeticionesController.getInstance();
