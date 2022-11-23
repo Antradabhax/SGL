@@ -1,5 +1,3 @@
-import vista.FrmMenuPrincipal;
-
 import javax.swing.*;
 
 

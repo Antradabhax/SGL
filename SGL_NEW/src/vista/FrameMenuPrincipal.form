@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="vista.FrameMenuPrincipal">
+  <grid id="27dc6" binding="menu" layout-manager="GridLayoutManager" row-count="4" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="946" height="408"/>
+    </constraints>
+    <properties>
+      <background color="-3028293"/>
+      <opaque value="true"/>
+      <visible value="true"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="612cf" class="javax.swing.JTextField" binding="sistemaDeGestionDeTextField" default-binding="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="82"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-3028293"/>
+          <editable value="false"/>
+          <font name="JetBrains Mono" size="20" style="1"/>
+          <horizontalAlignment value="0"/>
+          <opaque value="false"/>
+          <text value="Sistema de Gestion de Laboratorio"/>
+        </properties>
+      </component>
+      <component id="246f1" class="javax.swing.JButton" binding="eliminarSucursalButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="14"/>
+          <text value="Eliminar Sucursal"/>
+        </properties>
+      </component>
+      <component id="613d8" class="javax.swing.JButton" binding="eliminarPacienteButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="14"/>
+          <text value="Eliminar Paciente"/>
+        </properties>
+      </component>
+      <component id="9d087" class="javax.swing.JButton" binding="buscarPacienteButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="14"/>
+          <text value="Buscar Paciente"/>
+        </properties>
+      </component>
+      <component id="8ffed" class="javax.swing.JButton" binding="ingresarPacienteButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="14"/>
+          <text value="Ingresar Paciente"/>
+        </properties>
+      </component>
+      <component id="1c371" class="javax.swing.JButton" binding="eliminarPracticaButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="14"/>
+          <text value="Eliminar Practica"/>
+        </properties>
+      </component>
+      <component id="855f" class="javax.swing.JButton" binding="ingresarPracticaButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="14"/>
+          <text value="Ingresar Practica"/>
+        </properties>
+      </component>
+      <component id="4a83e" class="javax.swing.JButton" binding="listaPeticionesConResultadosButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="14"/>
+          <text value="Lista Peticiones con resultados criticos"/>
+        </properties>
+      </component>
+      <component id="6b86a" class="javax.swing.JButton" binding="buscarSucursalButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <font name="JetBrains Mono" size="14"/>
+          <text value="Buscar Sucursal"/>
+        </properties>
+      </component>
+      <component id="f3688" class="javax.swing.JButton" binding="ingresarSucursalButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="JetBrains Mono" size="14"/>
+          <text value="Ingresar Sucursal"/>
+        </properties>
+      </component>
+      <hspacer id="e2e36">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="809c1">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+    </children>
+  </grid>
+</form>
