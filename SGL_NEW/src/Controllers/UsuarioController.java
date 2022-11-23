@@ -1,5 +1,7 @@
 package Controllers;
 
+import clases.Usuario;
+
 import java.util.List;
 
 public class UsuarioController {

@@ -126,7 +126,7 @@ public class SucursalController {
                 PacienteDto pacienteACambiar = pacienteController.buscarPaciente(integer);
                 pacienteController.eliminarPaciente(integer);
                 Sucursal nuevaSuc = this.buscarSucursal(idSucPasaje);
-                pacienteACambiar.setSucursalPeticion(nuevaSuc);
+                pacienteACambiar.setSucursalPeticion(toDto(nuevaSuc));
                 pacienteController.agregarPaciente(pacienteACambiar);
             }
         }

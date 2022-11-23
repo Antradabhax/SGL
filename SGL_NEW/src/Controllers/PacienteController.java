@@ -74,7 +74,7 @@ public class PacienteController {
     }
 
     public static PacienteDto toDto(Paciente paciente){
-        return new PacienteDto(paciente.getDni(),paciente.getNombre(),paciente.getDomicilio(),paciente.getMail(),paciente.getSexo(),paciente.getEdad(),paciente.getSucursalPeticion(),paciente.getSucursalRetiro());
+        return new PacienteDto(paciente.getDni(),paciente.getNombre(),paciente.getDomicilio(),paciente.getMail(),paciente.getSexo(),paciente.getEdad(),SucursalController.toDto(paciente.getSucursalPeticion()),SucursalController.toDto(paciente.getSucursalRetiro()));
     }
 
     public PacienteDto buscarPaciente(int dniPac) {
