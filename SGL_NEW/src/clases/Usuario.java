@@ -1,7 +1,5 @@
 package clases;
 
-import clases.Roles;
-
 public class Usuario{
 
     private int dni;
