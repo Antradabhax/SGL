@@ -42,9 +42,9 @@ public class PeticionesController {
 
     public List<Peticion> listaPeticionPorDni(int dni) {
         List<Peticion> listaPeticionPorDNI = new ArrayList<Peticion>();
-        for (int i = 0; i > listaPeticiones.size(); i++) {
-            if (listaPeticiones.get(i).getPaciente().getDni() == dni) {
-                listaPeticionPorDNI.add(listaPeticiones.get(i));
+        for (Peticion listaPeticione : listaPeticiones) {
+            if (listaPeticione.getPaciente().getDni() == dni) {
+                listaPeticionPorDNI.add(listaPeticione);
             }
         }
         return listaPeticionPorDNI;
@@ -52,9 +52,9 @@ public class PeticionesController {
 
     public List<Peticion> listaPeticionPorSucursal(int idSuc) {
         List<Peticion> listaPeticionPorSUC = new ArrayList<Peticion>();
-        for (int i = 0; i > listaPeticiones.size(); i++) {
-            if (listaPeticiones.get(i).getPaciente().getSucursalPeticion().getIdSucursal() == idSuc) {
-                listaPeticionPorSUC.add(listaPeticiones.get(i));
+        for (Peticion listaPeticione : listaPeticiones) {
+            if (listaPeticione.getPaciente().getSucursalPeticion().getIdSucursal() == idSuc) {
+                listaPeticionPorSUC.add(listaPeticione);
             }
         }
         return listaPeticionPorSUC;
