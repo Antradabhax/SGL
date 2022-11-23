@@ -122,9 +122,9 @@ public class SucursalController {
             return "Hay pacientes con peticiones con resultados finalizados, no es posible borrar la sucursal";
         }
         if (peticionesAptas) {
-            for (int h = 0; h < dnisAPasar.size(); h++) {
-                PacienteDto pacienteACambiar = pacienteController.buscarPaciente(dnisAPasar.get(h));
-                pacienteController.eliminarPaciente(dnisAPasar.get(h));
+            for (Integer integer : dnisAPasar) {
+                PacienteDto pacienteACambiar = pacienteController.buscarPaciente(integer);
+                pacienteController.eliminarPaciente(integer);
                 Sucursal nuevaSuc = this.buscarSucursal(idSucPasaje);
                 pacienteACambiar.setSucursalPeticion(nuevaSuc);
                 pacienteController.agregarPaciente(pacienteACambiar);
