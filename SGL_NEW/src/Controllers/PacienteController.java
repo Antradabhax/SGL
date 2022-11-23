@@ -2,7 +2,6 @@ package Controllers;
 
 import clases.Paciente;
 import clases.Peticion;
-import clases.Sucursal;
 import dao.PacientesDao;
 import dto.PacienteDto;
 import dto.SucursalDto;
@@ -10,6 +9,7 @@ import dto.SucursalDto;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static Controllers.SucursalController.toSucursal;
 
@@ -42,7 +42,7 @@ public class PacienteController {
 
     public List<Paciente> getListaPacientes() {
 
-        return new ArrayList<Paciente>(listaPacientes);
+        return new ArrayList<>(listaPacientes);
     }
 
     public void crearPaciente(int dni, String nombre, String domicilio, String mail, String sexo, int edad,
@@ -50,7 +50,7 @@ public class PacienteController {
 
         for (Paciente pac : listaPacientes){
             if (pac.getDni() != dni){
-                PacienteDto p = null;
+                PacienteDto p;
                 p = new PacienteDto(dni, nombre, domicilio, mail, sexo, edad, sucursalPeticion, sucursalRetiro);
                 agregarPaciente(p);
             }
@@ -60,13 +60,13 @@ public class PacienteController {
     }
 
     public void setListaPacientes(List<Paciente> listaPacientes) {
-        this.listaPacientes = listaPacientes;
+        PacienteController.listaPacientes = listaPacientes;
     }
 
     public void agregarPaciente(PacienteDto pac/*paciente dto*/) {
 
 
-        this.listaPacientes.add(toPaciente(pac) );
+        listaPacientes.add(toPaciente(pac) );
     }
 
     public static Paciente toPaciente(PacienteDto dto){
@@ -79,7 +79,7 @@ public class PacienteController {
 
     public PacienteDto buscarPaciente(int dniPac) {
         Paciente buscado = new Paciente();
-        for (Paciente listaPaciente : this.listaPacientes) {
+        for (Paciente listaPaciente : listaPacientes) {
             if (listaPaciente.getDni() == dniPac) {
                 buscado = listaPaciente;
             }
@@ -87,10 +87,10 @@ public class PacienteController {
         return (toDto(buscado));
     }
 
-    public void cambiarPacienteDeSucursal(int dniPac, int newSucursal) {
-        for (Paciente listaPaciente : this.listaPacientes) {
+    public void cambiarPacienteDeSucursal(int dniPac, SucursalDto Sucursal) {
+        for (Paciente listaPaciente : listaPacientes) {
             if (listaPaciente.getDni() == dniPac) {
-                listaPaciente.setSucursalPeticion(null);
+                listaPaciente.setSucursalPeticion(toSucursal(Sucursal));
             }
         }
     }
@@ -105,8 +105,8 @@ public class PacienteController {
         }
         for (Peticion peticion : listaPeticionesPaciente) {
             for (int j = 0; j < peticion.getPracticasAsociadas().size(); j++) {
-                if (peticion.getPracticasAsociadas().get(j).getEstado()
-                        .toString() == "Finalizado") {
+                if (Objects.equals(peticion.getPracticasAsociadas().get(j).getEstado()
+                        .toString(), "Finalizado")) {
                     validez = false;
                 }
             }
@@ -130,7 +130,7 @@ public class PacienteController {
         for (Peticion peticion : peticionesDni) {
             boolean todosCriticos = true;
             for (int j = 0; j < peticion.getPracticasAsociadas().size(); j++) {
-                if (peticion.getPracticasAsociadas().get(j).getResultado().toString() == "Critico") {
+                if (Objects.equals(peticion.getPracticasAsociadas().get(j).getResultado().toString(), "Critico")) {
                     todosCriticos = false;
                 }
             }
