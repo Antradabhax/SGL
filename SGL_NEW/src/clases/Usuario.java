@@ -1,4 +1,4 @@
-package clases.ResultadoPractica;
+package clases;
 
 import clases.Roles;
 
