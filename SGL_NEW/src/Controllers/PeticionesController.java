@@ -1,31 +1,42 @@
 package Controllers;
 
 import clases.Peticion;
+import dao.PeticionesDao;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PeticionesController {
 
-    private List<Peticion> listaPeticiones;
+    private static List<Peticion> listaPeticiones;
+
+    private static PeticionesDao peticionesDao;
 
     private static PeticionesController peticionesController;
 
     private PeticionesController() {
-        this.cargarDatos();
+
     }
 
+    /*
     private void cargarDatos() {
         listaPeticiones = new ArrayList<>();
         Peticion p = new Peticion();
         this.listaPeticiones.add(p);
     }
+    */
 
-    public synchronized static PeticionesController getInstance() {
+    public synchronized static PeticionesController getInstance() throws Exception {
         if (peticionesController == null) {
             peticionesController = new PeticionesController();
+            peticionesDao = new PeticionesDao(Peticion.class, getPathOutPeticion(Peticion.class.getSimpleName()));
         }
         return peticionesController;
+    }
+
+    private static String getPathOutPeticion(String name) {
+        return new File("C:/IOO/"+name+".json").getPath();
     }
 
     public List<Peticion> obtenerListaPeticiones() {

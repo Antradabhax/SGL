@@ -22,7 +22,7 @@ public class PacienteController {
 
     private static PeticionesController peticionesController;
 
-    private PacienteController() {
+    private PacienteController() throws Exception {
         peticionesController = PeticionesController.getInstance();
     }
 
