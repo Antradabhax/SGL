@@ -141,4 +141,8 @@ public class PacienteController {
         return peticionesCriticas;
     }
 
+    public void close() throws Exception {
+        pacientesDao.saveAll(listaPacientes);
+    }
+
 }

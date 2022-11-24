@@ -70,4 +70,8 @@ public class PeticionesController {
         }
         return listaPeticionPorSUC;
     }
+
+    public void close() throws Exception {
+        peticionesDao.saveAll(listaPeticiones);
+    }
 }

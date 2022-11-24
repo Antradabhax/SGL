@@ -1,13 +1,12 @@
 package Controllers;
 
-import clases.Paciente;
 import clases.Peticion;
+import clases.Practica;
 import clases.Sucursal;
-import dao.PacientesDao;
+import dao.PracticasInhabilitadasDao;
 import dao.SucursalDao;
 import dto.PacienteDto;
 import dto.SucursalDto;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +14,12 @@ import java.util.List;
 public class SucursalController {
     private static List<Sucursal> listaSucursales;
 
-    private List<Integer> practicasInhabilitadas;
+    private static List<Integer> practicasInhabilitadas;
 
     private PacienteController pacienteController;
 
     private static SucursalDao sucursalDao;
+    private static PracticasInhabilitadasDao practicasInhabilitadasDao;
 
     private PeticionesController peticionesController;
 
@@ -36,6 +36,8 @@ public class SucursalController {
             sucursalController = new SucursalController();
             sucursalDao = new SucursalDao(Sucursal.class,getPathOutSucursal(Sucursal.class.getSimpleName()));
             listaSucursales = sucursalDao.getAll();
+            practicasInhabilitadasDao = new PracticasInhabilitadasDao(Integer.class,getPathOutPracticaInhabil(Integer.class.getSimpleName()));
+            practicasInhabilitadas = practicasInhabilitadasDao.getAll();
         }
         return sucursalController;
     }
@@ -43,6 +45,10 @@ public class SucursalController {
     private static String getPathOutSucursal(String name){
         String dir = "C:/IOO/";
         return  new File(dir+name+".json").getPath();
+    }
+
+    private static String getPathOutPracticaInhabil(String name){
+        return new File("C:/IOO/"+name+".json").getPath();
     }
 
     public static Sucursal toSucursal(SucursalDto dto){
@@ -103,7 +109,6 @@ public class SucursalController {
             if (peticion.getPaciente().getSucursalPeticion().getIdSucursal() == idSuc) {
                 for (int j = 0; j < peticion.getPracticasAsociadas().size(); j++) {
                     if (peticion.getPracticasAsociadas().get(j).getCodigoPractica() == idPra)
-                        ;
                     {
                         if (peticion.getPracticasAsociadas().get(j).isUsada()) {
                             addPracticaInhabilidata(idPra);
@@ -149,5 +154,10 @@ public class SucursalController {
             }
         }
         return "Finalizado, sucursal eliminada y pacientes traspasados";
+    }
+
+    public void close() throws Exception {
+        sucursalDao.saveAll(listaSucursales);
+        practicasInhabilitadasDao.saveAll(practicasInhabilitadas);
     }
 }

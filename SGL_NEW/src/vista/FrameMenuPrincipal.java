@@ -1,5 +1,9 @@
 package vista;
 
+import Controllers.PacienteController;
+import Controllers.SucursalController;
+import Controllers.UsuarioController;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -107,14 +111,19 @@ public class FrameMenuPrincipal extends JFrame {
     private JButton eliminarSucursalButton;
     private JButton ingresarPracticaButton;
     private JButton ingresarSucursalButton;
-
     private FrameMenuPrincipal self;
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("FrameMenuPrincipal");
-        frame.setContentPane(new FrameMenuPrincipal().menu);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+    @Override
+    public void dispose(){
+        try{
+            PacienteController.getInstance().close();
+            SucursalController.getInstance().close();
+            PacienteController.getInstance().close();
+            UsuarioController.getInstance().close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+       super.dispose();
     }
+
 }

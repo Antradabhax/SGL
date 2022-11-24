@@ -40,4 +40,8 @@ public class UsuarioController {
         }
         return r;
     }
+
+    public void close() throws Exception {
+        usuarioDao.saveAll(ListaUsuarios);
+    }
 }
