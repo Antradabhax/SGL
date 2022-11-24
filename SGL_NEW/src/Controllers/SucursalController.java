@@ -1,5 +1,6 @@
 package Controllers;
 
+import clases.Paciente;
 import clases.Peticion;
 import clases.Practica;
 import clases.Sucursal;
@@ -69,9 +70,9 @@ public class SucursalController {
 
     public SucursalDto buscarSucursal(int idSuc) {
         SucursalDto buscada = new SucursalDto();
-        for (Sucursal listaSucursale : listaSucursales) {
-            if (listaSucursale.getIdSucursal() == idSuc) {
-                buscada = toDto(listaSucursale);
+        for (Sucursal Sucursale : listaSucursales) {
+            if (Sucursale.getIdSucursal() == idSuc) {
+                buscada = toDto(Sucursale);
                 break;
             }
         }
@@ -82,8 +83,9 @@ public class SucursalController {
         Sucursal sN = toSucursal(s);
         boolean existe = false;
         for (Sucursal sucursal: listaSucursales) {
-            if (sucursal.getIdSucursal() == sN.getIdSucursal()){
+            if (sucursal.getIdSucursal() == sN.getIdSucursal()) {
                 existe = true;
+                break;
             }
         }
         if (!existe){
@@ -92,15 +94,15 @@ public class SucursalController {
     }
 
     public List<Integer> getPracticasInhabilitadas() {
-        return this.practicasInhabilitadas;
+        return practicasInhabilitadas;
     }
 
     public void setPracticasInhabilitadas(List<Integer> practicasInhabilitadas) {
-        this.practicasInhabilitadas = practicasInhabilitadas;
+        SucursalController.practicasInhabilitadas = practicasInhabilitadas;
     }
 
     public void addPracticaInhabilidata(int idPractica) {
-        this.practicasInhabilitadas.add(idPractica);
+        practicasInhabilitadas.add(idPractica);
     }
 
     public String eliminarPractica(int idPra, int idSuc) {
@@ -125,7 +127,7 @@ public class SucursalController {
         return "Finalizado";
     }
 
-    public String eliminarSucursal(int idSuc, int idSucPasaje) {
+    public String eliminarSucursal(int idSuc) {
         boolean peticionesAptas = true;
         List<Integer> dnisAPasar = new ArrayList<>();
         for (int j = 0; j < pacienteController.getListaPacientes().size(); j++) {
@@ -141,19 +143,38 @@ public class SucursalController {
                 }
             }
         }
+        int contador = Integer.MAX_VALUE;
+
+        Sucursal SucursalPasaje = new Sucursal();
         if (!peticionesAptas) {
             return "Hay pacientes con peticiones con resultados finalizados, no es posible borrar la sucursal";
-        }
-        if (peticionesAptas) {
+        }else{
+            for (Sucursal sucursal : listaSucursales){
+                int contador2 = 0;
+                for (Paciente p : pacienteController.getListaPacientes()){
+                    contador2++;
+                }
+                if (contador2 < contador){
+                    SucursalPasaje = sucursal;//la sucursal que tiene menos pacientes
+                }
+            }
             for (Integer integer : dnisAPasar) {
                 PacienteDto pacienteACambiar = pacienteController.buscarPaciente(integer);
                 pacienteController.eliminarPaciente(integer);
-                SucursalDto nuevaSuc = this.buscarSucursal(idSucPasaje);
+                SucursalDto nuevaSuc = this.buscarSucursal(SucursalPasaje.getIdSucursal());
                 pacienteACambiar.setSucursalPeticion(nuevaSuc);
                 pacienteController.agregarPaciente(pacienteACambiar);
             }
+            for (int l = 0; l<listaSucursales.size();l++){
+                if (listaSucursales.get(l).getIdSucursal() == idSuc){
+                    listaSucursales.remove(l);
+                    break;
+                }
+            }
+
+            return "Finalizado, sucursal eliminada y pacientes traspasados";
         }
-        return "Finalizado, sucursal eliminada y pacientes traspasados";
+
     }
 
     public void close() throws Exception {

@@ -39,7 +39,8 @@ public class FrameMenuPrincipal extends JFrame {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                FrameEliminarSucursal a = new FrameEliminarSucursal(self, "Eliminar sucursal");
+                a.setVisible(true);
             }
         });
         ingresarPacienteButton.addActionListener(new ActionListener() {
