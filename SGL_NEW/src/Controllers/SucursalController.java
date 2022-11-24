@@ -67,6 +67,19 @@ public class SucursalController {
         return buscada;
     }
 
+    public void agregarSucursal(SucursalDto s) {
+        Sucursal sN = toSucursal(s);
+        boolean existe = false;
+        for (Sucursal sucursal: listaSucursales) {
+            if (sucursal.getIdSucursal() == sN.getIdSucursal()){
+                existe = true;
+            }
+        }
+        if (!existe){
+            listaSucursales.add(sN);
+        }
+    }
+
     public List<Integer> getPracticasInhabilitadas() {
         return this.practicasInhabilitadas;
     }

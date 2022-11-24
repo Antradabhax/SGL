@@ -4,21 +4,22 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FrameMenuPrincipal {
+public class FrameMenuPrincipal extends JFrame {
 
     public FrameMenuPrincipal() { // listeners
+
+        super("Menu principal aplicacion SWING");
+        setSize(800,800);
+        //Centrar la pantalla
+        setLocationRelativeTo(null);
+        setContentPane(menu);
+        this.self=this;
         ingresarSucursalButton.addActionListener(new ActionListener() {
-            /**
-             * @param e the event to be processed
-             */
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"FUCK YOU MAX MARTIN");
-                JFrame frame = new JFrame("FrameSucursales");
-                frame.setContentPane(new FrameMenuPrincipal().menuSucursales);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
+                FrameTablaSucursal dialog = new FrameTablaSucursal(self, "Ingreso sucursales");
+                dialog.setVisible(true);
+
             }
         });
         buscarSucursalButton.addActionListener(new ActionListener() {
@@ -98,7 +99,6 @@ public class FrameMenuPrincipal {
 
     private JPanel menu;
 
-    private JPanel menuSucursales;
     private JTextField sistemaDeGestionDeTextField;
     private JButton ingresarPacienteButton;
     private JButton buscarPacienteButton;
@@ -109,6 +109,8 @@ public class FrameMenuPrincipal {
     private JButton eliminarSucursalButton;
     private JButton ingresarPracticaButton;
     private JButton ingresarSucursalButton;
+
+    private FrameMenuPrincipal self;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("FrameMenuPrincipal");

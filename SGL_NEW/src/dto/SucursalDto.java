@@ -5,12 +5,12 @@ import clases.Usuario;
 public class SucursalDto {
     private int idSucursal;
     private String direccion;
-    private Usuario respTecnico;
+    private int respTecnico;
 
     public SucursalDto() {
     }
 
-    public SucursalDto(int idSucursal, String direccion, Usuario respTecnico) {
+    public SucursalDto(int idSucursal, String direccion, int respTecnico) {
         this.idSucursal = idSucursal;
         this.direccion = direccion;
         this.respTecnico = respTecnico;
@@ -32,11 +32,11 @@ public class SucursalDto {
         this.direccion = direccion;
     }
 
-    public Usuario getRespTecnico() {
+    public int getRespTecnico() {
         return this.respTecnico;
     }
 
-    public void setRespTecnico(Usuario respTecnico) {
+    public void setRespTecnico(int respTecnico) {
         this.respTecnico = respTecnico;
     }
 

@@ -1,10 +1,22 @@
+import Controllers.PacienteController;
+import Controllers.PeticionesController;
+import Controllers.SucursalController;
+import Controllers.UsuarioController;
+import vista.FrameMenuPrincipal;
+
 import javax.swing.*;
 
-
 public class Main {
-    public static void main(String[] args) {
-        FrmMenuPrincipal win = new FrmMenuPrincipal();
+    public static void main(String[] args) throws Exception {
+
+        SucursalController.getInstance();
+        UsuarioController.getInstance();
+        PeticionesController.getInstance();
+        PacienteController.getInstance();
+        FrameMenuPrincipal win = new FrameMenuPrincipal();
         win.setVisible(true);
-        win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        win.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+
     }
-}
+};

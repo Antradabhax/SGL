@@ -3,12 +3,12 @@ package clases;
 public class Sucursal {
     private int idSucursal;
     private String direccion;
-    private Usuario respTecnico;
+    private int respTecnico;
 
     public Sucursal() {
     }
 
-    public Sucursal(int idSucursal, String direccion, Usuario respTecnico) {
+    public Sucursal(int idSucursal, String direccion, int respTecnico) {
         this.idSucursal = idSucursal;
         this.direccion = direccion;
         this.respTecnico = respTecnico;
@@ -30,11 +30,11 @@ public class Sucursal {
         this.direccion = direccion;
     }
 
-    public Usuario getRespTecnico() {
+    public int getRespTecnico() {
         return this.respTecnico;
     }
 
-    public void setRespTecnico(Usuario respTecnico) {
+    public void setRespTecnico(int respTecnico) {
         this.respTecnico = respTecnico;
     }
 

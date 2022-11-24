@@ -1,5 +1,7 @@
 package clases.ResultadoPractica;
 
+import clases.TipoReserva;
+
 public class ResultadoPractica {
     private TipoReserva confidencialidad;
 
