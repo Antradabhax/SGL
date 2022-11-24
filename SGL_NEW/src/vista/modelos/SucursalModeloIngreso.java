@@ -1,5 +1,6 @@
-package vista;
+package vista.modelos;
 
+import Controllers.SucursalController;
 import dto.SucursalDto;
 
 import javax.swing.table.AbstractTableModel;

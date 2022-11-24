@@ -23,12 +23,10 @@ public class FrameMenuPrincipal extends JFrame {
             }
         });
         buscarSucursalButton.addActionListener(new ActionListener() {
-            /**
-             * @param e the event to be processed
-             */
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                FrameBuscarSucursal a = new FrameBuscarSucursal(self, "Ingreso sucursales");
+                a.setVisible(true);
             }
         });
         eliminarSucursalButton.addActionListener(new ActionListener() {

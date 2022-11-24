@@ -9,48 +9,46 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FrameTablaSucursal extends JDialog {
-
-    private JPanel panelPrincipal;
-    private JTable table1;
-    private JButton agregarButton;
-    private JSpinner sucursal;
-    private JTextField Direccion;
-    private JTextField DNI;
+public class FrameBuscarSucursal extends JDialog {
+    private JPanel pnlPrincipal;
+    private JSpinner idSucursal;
+    private JTable tabla;
+    private JButton botonBuscar;
 
     private SucursalModeloIngreso modelo = new SucursalModeloIngreso();
 
-
-    public FrameTablaSucursal(Window owner, String titulo)
+    public FrameBuscarSucursal(Window owner, String titulo)
     {
         super(owner, titulo);
         setSize(400,400);
         setModal(true);
         setLocationRelativeTo(null);
-        setContentPane(panelPrincipal);
+        setContentPane(pnlPrincipal);
         asignarDatosTabla();
         AsignarEventos();
     }
 
-    private void AsignarEventos()
-    {
-        agregarButton.addActionListener(new ActionListener() {
+    private void AsignarEventos() {
+        botonBuscar.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                SucursalDto c = new SucursalDto(Integer.parseInt(sucursal.getValue().toString()), Direccion.getText(), Integer.parseInt(DNI.getText()));
-                modelo.addSucursal(c);
+                SucursalDto c;
                 try {
                     SucursalController sucursalContol = SucursalController.getInstance();
-                    sucursalContol.agregarSucursal(c);
+                    c = sucursalContol.buscarSucursal(Integer.parseInt(idSucursal.getValue().toString()));
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
+                modelo.addSucursal(c);
             }
+
         });
     }
-    private void asignarDatosTabla()
-    {
-        table1.setModel(modelo);
+    private void asignarDatosTabla(){
+        tabla.setModel(modelo);
     }
 
 }
+
+

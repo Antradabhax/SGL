@@ -16,6 +16,7 @@ public class Main {
         FrameMenuPrincipal win = new FrameMenuPrincipal();
         win.setVisible(true);
         win.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //ON DISPOSE TO SAVE ALL THE LISTS FROM THE CONTROLLERS TO THE GSON FILES
 
 
     }

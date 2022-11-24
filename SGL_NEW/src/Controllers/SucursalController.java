@@ -53,15 +53,20 @@ public class SucursalController {
         return new SucursalDto(S.getIdSucursal(),S.getDireccion(),S.getRespTecnico());
     }
 
-    public List<Sucursal> getListaSucursales() {
-        return new ArrayList<Sucursal>(listaSucursales);
+    public ArrayList<SucursalDto> getListaSucursales() {
+        ArrayList<SucursalDto> A = new ArrayList<>();
+        for(Sucursal sucursal : listaSucursales){
+            A.add(toDto(sucursal));
+        }
+        return A;
     }
 
-    public Sucursal buscarSucursal(int idSuc) {
-        Sucursal buscada = new Sucursal();
+    public SucursalDto buscarSucursal(int idSuc) {
+        SucursalDto buscada = new SucursalDto();
         for (Sucursal listaSucursale : listaSucursales) {
             if (listaSucursale.getIdSucursal() == idSuc) {
-                buscada = listaSucursale;
+                buscada = toDto(listaSucursale);
+                break;
             }
         }
         return buscada;
@@ -138,8 +143,8 @@ public class SucursalController {
             for (Integer integer : dnisAPasar) {
                 PacienteDto pacienteACambiar = pacienteController.buscarPaciente(integer);
                 pacienteController.eliminarPaciente(integer);
-                Sucursal nuevaSuc = this.buscarSucursal(idSucPasaje);
-                pacienteACambiar.setSucursalPeticion(toDto(nuevaSuc));
+                SucursalDto nuevaSuc = this.buscarSucursal(idSucPasaje);
+                pacienteACambiar.setSucursalPeticion(nuevaSuc);
                 pacienteController.agregarPaciente(pacienteACambiar);
             }
         }
